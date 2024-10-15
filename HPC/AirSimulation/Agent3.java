@@ -2,7 +2,7 @@ public class Agent3 implements Agent
 {
     // reference to the Aircraft
     private Aircraft aircraft;
-    private int threshold = 3;
+    private int threshold = 6;
     // Agent2 constructor
     public Agent3(Aircraft aircraft)
     {
@@ -36,9 +36,6 @@ public class Agent3 implements Agent
         {
             return;  // nothing done
         }
-
-        Customer c = new Customer();
-        if (c.getFlyerLevel() < threshold)  seatIt.place(c);
     }
 }
 
