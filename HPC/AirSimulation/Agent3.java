@@ -3,7 +3,7 @@ public class Agent3 extends Thread implements Agent
     // reference to the Aircraft
     private Aircraft aircraft;
     private int threshold = 6;
-    // Agent2 constructor
+    // Agent3 constructor
     public Agent3(Aircraft aircraft)
     {
         this.aircraft = aircraft;
