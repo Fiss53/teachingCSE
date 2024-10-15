@@ -6,7 +6,7 @@
  * AM
  */
 
-public class Agent1 implements Agent
+public class Agent1 extends Thread implements Agent
 {
    // reference to the Aircraft
    private Aircraft aircraft;
@@ -18,6 +18,7 @@ public class Agent1 implements Agent
    }
 
    // everytime it is invoked, it creates and places one Customer
+   @Override
    public void run()
    {
       if (this.aircraft.isFull())  return;
