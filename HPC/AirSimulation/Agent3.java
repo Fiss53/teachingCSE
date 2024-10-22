@@ -26,6 +26,7 @@ public class Agent3 extends Thread implements Agent
         Aircraft.SeatIterator seatIt = this.aircraft.iterator();
         try
         {
+            sem.acquire();
             Customer cFound = seatIt.next();
             while (cFound != null)
             {
@@ -37,6 +38,7 @@ public class Agent3 extends Thread implements Agent
                         c = new Customer();
                     }
                     seatIt.place(c);
+                    sem.release();
                 }
                 cFound = seatIt.next();
             }

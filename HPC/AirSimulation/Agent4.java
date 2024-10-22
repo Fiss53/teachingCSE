@@ -18,12 +18,15 @@ public class Agent4 extends Thread implements Agent{
     }
     public void putClient(){
         Aircraft.SeatIterator seatIt = this.aircraft.iterator();
+
         try {
+            sem.acquire();
             while (true) {
                 Customer c = seatIt.next();
                 if (c != null) {
                     seatIt.remove();
                     seatIt.place(c);
+                    sem.release();
                 }
             }
         } catch (Exception e) {
