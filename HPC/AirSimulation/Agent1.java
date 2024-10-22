@@ -32,9 +32,11 @@ public class Agent1 extends Thread implements Agent
    }
 
    private void putClient() {
+
       Aircraft.SeatIterator seatIt = this.aircraft.iterator();
       try
       {
+         sem.acquire();
          while (seatIt.next() != null);
       }
       catch (Exception e)
@@ -44,6 +46,7 @@ public class Agent1 extends Thread implements Agent
 
       Customer c = new Customer();
       if (!c.isOver70() || !seatIt.isNearEmergencyExit())  seatIt.place(c);
+      sem.release();
    }
 }
 
