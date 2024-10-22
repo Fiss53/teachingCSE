@@ -8,24 +8,23 @@ public class Agent4 extends Thread implements Agent{
     {
         this.aircraft = aircraft;
     }
-    public void run()
-    {
+    @Override
+    public void run() {
+        putClient();
+    }
+    public void putClient(){
         Aircraft.SeatIterator seatIt = this.aircraft.iterator();
-        try
-        {
-            while (true)
-            {
+        try {
+            while (true) {
                 Customer c = seatIt.next();
-                if (c != null)
-                {
+                if (c != null) {
                     seatIt.remove();
                     seatIt.place(c);
                 }
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             return;  // iterations are over
         }
     }
 }
+

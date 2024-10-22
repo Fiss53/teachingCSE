@@ -6,25 +6,24 @@
  * AM
  */
 
+import java.util.concurrent.Semaphore;
+
 public class AirSimulation
 {
    public static void main(String[] args)
    {
       Aircraft aircraft = new Aircraft();
-      Agent agent1 = new Agent1(aircraft);
-      Agent agent2 = new Agent2(aircraft);
-      Agent agent3 = new Agent3(aircraft);
-      //Agent agent4 = new Agent4(aircraft);
-      while (!aircraft.isFull())
-      {
-         agent1.run();
-         agent2.run();
-         agent3.run();
-         //agent4.run();
-         System.out.println(aircraft);
-         System.out.println(aircraft.cleanString());
-      }
+      Agent1 agent1 = new Agent1(aircraft);
+      Agent2 agent2 = new Agent2(aircraft);
+      //Agent3 agent3 = new Agent3(aircraft);
+      //Agent4 agent4 = new Agent4(aircraft);
+      final Semaphore sem = new Semaphore(1);
+      agent1.start();
+      //agent2.start();
+      //agent3.start();
+      //agent4.start();
       System.out.println(aircraft);
+      System.out.println(aircraft.cleanString());
    }
 }
 
