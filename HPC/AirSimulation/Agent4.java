@@ -1,12 +1,16 @@
+import java.util.concurrent.Semaphore;
+
 public class Agent4 extends Thread implements Agent{
 
 
     private Aircraft aircraft;
+    private Semaphore sem;
 
     // Agent4 constructor
-    public Agent4(Aircraft aircraft)
+    public Agent4(Aircraft aircraft, Semaphore sem)
     {
         this.aircraft = aircraft;
+        this.sem = sem;
     }
     @Override
     public void run() {

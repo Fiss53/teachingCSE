@@ -6,15 +6,19 @@
  * AM
  */
 
+import java.util.concurrent.Semaphore;
+
 public class Agent2 extends Thread implements Agent
 {
    // reference to the Aircraft
    private Aircraft aircraft;
+   private Semaphore sem;
 
    // Agent2 constructor
-   public Agent2(Aircraft aircraft)
+   public Agent2(Aircraft aircraft, Semaphore sem)
    {
       this.aircraft = aircraft;
+      this.sem = sem;
    }
 
    // everytime it is invoked, it creates and places one Customer
