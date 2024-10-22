@@ -21,7 +21,13 @@ public class Agent2 extends Thread implements Agent
    @Override
    public void run()
    {
-      if (this.aircraft.isFull())  return;
+      while (!this.aircraft.isFull()) {
+         putClient();
+      }
+   }
+
+   private void putClient() {
+
       Aircraft.SeatIterator seatIt = this.aircraft.iterator();
       try
       {
@@ -29,11 +35,11 @@ public class Agent2 extends Thread implements Agent
       }
       catch (Exception e)
       {
-         return;  // nothing done
+         return;
       }
 
       Customer c = new Customer();
-      if (!c.needsAssistence() || !seatIt.isNearEmergencyExit())  seatIt.place(c);
+      if (!(c.needsAssistence() && seatIt.isNearEmergencyExit()))  seatIt.place(c);
    }
 }
 
